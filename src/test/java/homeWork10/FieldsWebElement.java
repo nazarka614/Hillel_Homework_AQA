@@ -7,23 +7,17 @@ public class FieldsWebElement {
     By inputLastNameField;
     By inputEmailField;
     By inputMobileField;
-    By inputAddress;
-
-
-    public FieldsWebElement(By inputFirstNameField, By inputLastNameField, By inputEmailField, By inputMobileField, By inputAddress) {
-        this.inputFirstNameField = inputFirstNameField;
-        this.inputLastNameField = inputLastNameField;
-        this.inputEmailField = inputEmailField;
-        this.inputMobileField = inputMobileField;
-        this.inputAddress = inputAddress;
-    }
+    By inputSubjectField;
+    By inputAddressField;
 
     public FieldsWebElement() {
         this.inputFirstNameField = By.xpath("//*[@id=\"firstName\"]");
         this.inputLastNameField = By.id("lastName");
         this.inputEmailField = By.id("userEmail");
         this.inputMobileField = By.id("userNumber");
-        this.inputAddress = By.id("currentAddress");;
+        this.inputSubjectField = By.id("subjectsInput");
+        this.inputAddressField = By.id("currentAddress");
+
     }
 
     public By getInputFirstNameField() {
@@ -41,9 +35,11 @@ public class FieldsWebElement {
     public By getInputMobileField() {
         return inputMobileField;
     }
-
-
-    public By getInputAddress() {
-        return inputAddress;
+    public By getInputSubjectField() {
+        return inputSubjectField;
     }
+    public By getInputAddressField() {
+        return inputAddressField;
+    }
+
 }
