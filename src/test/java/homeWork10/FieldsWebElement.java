@@ -35,9 +35,11 @@ public class FieldsWebElement {
     public By getInputMobileField() {
         return inputMobileField;
     }
+
     public By getInputSubjectField() {
         return inputSubjectField;
     }
+
     public By getInputAddressField() {
         return inputAddressField;
     }
