@@ -29,17 +29,6 @@ public class BaseClass {
         }
     }
 
-    public static void closeChrome() {
-        if (driver == null) {
-            try {
-                Thread.sleep(800);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            driver.quit();
-        }
-    }
-
 
     public static void setURL(String string) {
         driver.get(string);
