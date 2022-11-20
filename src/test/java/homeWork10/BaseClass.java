@@ -1,7 +1,9 @@
 package homeWork10;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import java.time.Duration;
 
 public class BaseClass {
@@ -29,10 +31,10 @@ public class BaseClass {
         }
     }
 
-
     public static void setURL(String string) {
         driver.get(string);
     }
+
 
     public static void FillDataInFields() {
         createFieldsWebElement();
@@ -40,10 +42,22 @@ public class BaseClass {
         driver.findElement(fieldsWebElement.getInputFirstNameField()).sendKeys(user.getFirstname());
         driver.findElement(fieldsWebElement.getInputLastNameField()).sendKeys(user.getLastname());
         driver.findElement(fieldsWebElement.getInputEmailField()).sendKeys(user.getEmail());
+        if (user.isMale()) {
+            driver.findElement(fieldsWebElement.getGenderMale()).click();
+        } else if (user.isFemale()) {
+            driver.findElement(fieldsWebElement.getGenderFemale()).click();
+        }
         driver.findElement(fieldsWebElement.getInputMobileField()).sendKeys(user.getMobile());
         driver.findElement(fieldsWebElement.getInputSubjectField()).click();
         driver.findElement(fieldsWebElement.getInputSubjectField()).sendKeys(user.getSubject());
         driver.findElement(fieldsWebElement.getInputSubjectField()).sendKeys(Keys.ENTER);
+        if (user.getHobbies() == Hobbies.Sports) {
+            driver.findElement(fieldsWebElement.getHobbiesSport()).click();
+        } else if (user.getHobbies() == Hobbies.Reading) {
+            driver.findElement(fieldsWebElement.getHobbiesReading()).click();
+        } else if (user.getHobbies() == Hobbies.Music) {
+            driver.findElement(fieldsWebElement.getHobbiesMusic()).click();
+        }
         driver.findElement(fieldsWebElement.getInputAddressField()).sendKeys(user.getAddress());
     }
 }
