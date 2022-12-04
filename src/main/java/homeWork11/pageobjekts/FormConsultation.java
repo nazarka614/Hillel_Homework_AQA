@@ -6,6 +6,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class FormConsultation {
     @FindBy(id = "firstName")
     WebElement inputFirstNameField;
@@ -29,17 +31,35 @@ public class FormConsultation {
     WebElement hobbiesMusic;
     @FindBy(id = "currentAddress")
     WebElement inputAddressField;
+    @FindBy(xpath = "//div[contains(@class, 'subjects-auto-complete__option--is-focused')]")
+    WebElement FocusSUB;
 
     public void completeForm(User user) {
         this.inputFirstNameField.sendKeys(user.getFirstname());
         this.inputLastNameField.sendKeys(user.getLastname());
         this.inputEmailField.sendKeys(user.getEmail());
-        if (user.isMale()) { this.genderMale.click();}
-        else if (user.isFemale()) {this.genderFemale.click();}
+        if (user.isMale()) {
+            this.genderMale.click();
+        } else if (user.isFemale()) {
+            this.genderFemale.click();
+        }
         this.inputMobileField.sendKeys(user.getMobile());
-        this.inputSubjectField.click();
-        this.inputSubjectField.sendKeys(user.getSubject());
-        this.inputSubjectField.sendKeys(Keys.ENTER);
+        this.inputSubjectField.sendKeys("E");
+        int i = 0;
+        while (i<=7){
+            try {
+                Thread.sleep(400);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            i++;
+            if (this.FocusSUB.getText().equals("Economics")){
+                this.inputSubjectField.sendKeys(Keys.ENTER);
+                break;
+            }else {
+                this.inputSubjectField.sendKeys(Keys.DOWN);
+            }
+        }
         if (user.getHobbies() == Hobbies.Sports) {
             this.hobbiesSport.click();
         } else if (user.getHobbies() == Hobbies.Reading) {
@@ -49,5 +69,4 @@ public class FormConsultation {
         }
         this.inputAddressField.sendKeys(user.getAddress());
     }
-
 }

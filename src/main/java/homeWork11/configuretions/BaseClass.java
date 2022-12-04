@@ -15,7 +15,7 @@ public class BaseClass {
     @AfterClass
     public static void after() {
         try {
-            Thread.sleep(10000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
