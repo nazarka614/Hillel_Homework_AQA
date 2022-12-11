@@ -31,7 +31,6 @@ public class PageText {
     }
 
     public String getCourseGoals() {
-        goals.toString();
         for (WebElement l: goals){
             System.out.println(l.getText());
         }
