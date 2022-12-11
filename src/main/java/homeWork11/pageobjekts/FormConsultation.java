@@ -1,12 +1,9 @@
 package homeWork11.pageobjekts;
-
 import homeWork11.data.Hobbies;
 import homeWork11.data.User;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 
 public class FormConsultation {
     @FindBy(id = "firstName")
@@ -46,17 +43,17 @@ public class FormConsultation {
         this.inputMobileField.sendKeys(user.getMobile());
         this.inputSubjectField.sendKeys("E");
         int i = 0;
-        while (i<=7){
+        while (i <= 7) {
             try {
                 Thread.sleep(400);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
             i++;
-            if (this.FocusSUB.getText().equals("Economics")){
+            if (this.FocusSUB.getText().equals("Economics")) {
                 this.inputSubjectField.sendKeys(Keys.ENTER);
                 break;
-            }else {
+            } else {
                 this.inputSubjectField.sendKeys(Keys.DOWN);
             }
         }
